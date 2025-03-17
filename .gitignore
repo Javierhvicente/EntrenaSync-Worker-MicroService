@@ -38,3 +38,8 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+### enviorment ###
+.env
+mongoinit.js
+docker-compose.yml
