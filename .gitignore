@@ -40,6 +40,6 @@ out/
 .kotlin
 
 ### enviorment ###
-.env
-mongoinit.js
-docker-compose.yml
+docker/.env
+docker/mongoinit.js
+docker/docker-compose.yml
