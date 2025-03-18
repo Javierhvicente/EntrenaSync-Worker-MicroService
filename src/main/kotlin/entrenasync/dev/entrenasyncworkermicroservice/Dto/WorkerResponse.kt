@@ -1,5 +1,6 @@
 package entrenasync.dev.entrenasyncworkermicroservice.Dto
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import entrenasync.dev.entrenasyncworkermicroservice.Models.Worker
 import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.Min
@@ -9,7 +10,7 @@ import java.time.LocalDateTime
 
 data class WorkerResponse(
 
-    val id: ObjectId,
+    val id: String,
 
     @field:NotBlank(message = "User id must be not empty")
     val id_user: String, //TODO Puede dar problemas, posibilidad de cambiarlo por string

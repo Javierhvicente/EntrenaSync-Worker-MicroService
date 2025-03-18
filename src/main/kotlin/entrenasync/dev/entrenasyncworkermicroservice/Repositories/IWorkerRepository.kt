@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface IWorkerRepository: MongoRepository<Worker, ObjectId> {
-    fun findByUsername(username: String): Worker?
+    fun findByFullName(fullName: String): Worker?
 }

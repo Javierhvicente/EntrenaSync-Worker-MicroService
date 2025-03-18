@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 
 fun Worker.toResponse(): WorkerResponse {
     return WorkerResponse(
-        id = id!!,
+        id = id.toString(),
         id_user = id_user,
         id_workerType = id_workerType,
         fullName = fullName,
@@ -33,7 +33,7 @@ fun WorkerCreateRequest.toWorker(workerTypeId: ObjectId): Worker {
         birthdate = birthdate,
         phone = phone,
         address = address,
-        gender = gender,
+        gender = Worker.Gender.valueOf(gender),
         degree_image = degree_image,
         avatar = avatar,
         id_workerType = workerTypeId
