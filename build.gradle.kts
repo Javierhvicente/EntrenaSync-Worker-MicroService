@@ -25,9 +25,9 @@ dependencies {
     //validation
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
-    //logging
-    implementation("org.lighthousegames:logging:2.0.3")
-    implementation("ch.qos.logback:logback-classic:1.5.16")
+    // Logback por defecto
+    implementation("org.springframework.boot:spring-boot-starter-logging")
+    implementation("org.slf4j:slf4j-api:2.0.9")
 
     // web
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -36,9 +36,11 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-    // test
+    //test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testImplementation("io.mockk:mockk:1.13.5")
+    testImplementation("com.ninja-squad:springmockk:4.0.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
@@ -50,4 +52,12 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.withType<Jar> {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.bootJar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
