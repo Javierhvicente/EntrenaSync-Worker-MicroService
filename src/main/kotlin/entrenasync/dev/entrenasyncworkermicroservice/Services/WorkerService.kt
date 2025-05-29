@@ -10,7 +10,7 @@ import entrenasync.dev.entrenasyncworkermicroservice.Models.WorkerType
 import entrenasync.dev.entrenasyncworkermicroservice.Repositories.IWorkerRepository
 import entrenasync.dev.entrenasyncworkermicroservice.Repositories.IWorkerTypeRepository
 import org.bson.types.ObjectId
-import org.lighthousegames.logging.logging
+import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -20,25 +20,25 @@ class WorkerService(
     private val workerRepository: IWorkerRepository,
     private val workerTypeRepository: IWorkerTypeRepository
 ): IWorkerService {
-    private val logger = logging()
+    private val logger = LoggerFactory.getLogger(WorkerService::class.java)
     override fun getWorkers(pageable: Pageable): Page<WorkerResponse> {
-        logger.info { "Getting all workers" }
+        logger.info("Getting all workers")
         val workers = workerRepository.findAll(pageable)
         return workers.map{worker ->worker.toResponse()}
     }
 
     override fun getWorkerById(id: ObjectId): WorkerResponse? {
-        logger.info { "Getting worker by $id" }
+        logger.info ("Getting worker by $id" )
         return workerRepository.findById(id).orElseThrow{WorkerExceptions.WorkerNotFound(id.toString())}.toResponse()
     }
 
     override fun getWorkerByName(name: String): WorkerResponse? {
-        logger.info { "Getting worker by name: $name" }
+        logger.info ("Getting worker by name: $name" )
         return workerRepository.findByFullName(name)?.toResponse() ?: throw WorkerExceptions.WorkerNotFoundWithName(name)
     }
 
     override fun saveWorker(worker: WorkerCreateRequest): WorkerResponse {
-        logger.info { "Saving worker" }
+        logger.info  ("Saving worker" )
         val workerType = workerTypeRepository.findByName(worker.workerType)
             ?: workerTypeRepository.save(WorkerType(name = worker.workerType))
 
@@ -48,7 +48,7 @@ class WorkerService(
     }
 
     override fun updateWorker(id: ObjectId, worker: WorkerUpdateRequest): WorkerResponse? {
-        logger.info { "Updating worker with id: $id" }
+        logger.info  ("Updating worker with id: $id" )
         val oldWorker = workerRepository.findById(id).orElseThrow{WorkerExceptions.WorkerNotFound(id.toString())}
         val workerType = workerTypeRepository.findByName(worker.workerType)
             ?: workerTypeRepository.save(WorkerType(name = worker.workerType))
@@ -57,7 +57,7 @@ class WorkerService(
     }
 
     override fun deleteWorker(id: ObjectId) {
-        logger.info { "Deleting worker with id: $id" }
+        logger.info  ("Deleting worker with id: $id" )
         return workerRepository.deleteById(id)
     }
 }
