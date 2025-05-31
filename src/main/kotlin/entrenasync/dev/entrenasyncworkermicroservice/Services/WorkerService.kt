@@ -27,12 +27,12 @@ class WorkerService(
         return workers.map{worker ->worker.toResponse()}
     }
 
-    override fun getWorkerById(id: ObjectId): WorkerResponse? {
+    override fun getWorkerById(id: ObjectId): WorkerResponse {
         logger.info ("Getting worker by $id" )
         return workerRepository.findById(id).orElseThrow{WorkerExceptions.WorkerNotFound(id.toString())}.toResponse()
     }
 
-    override fun getWorkerByName(name: String): WorkerResponse? {
+    override fun getWorkerByName(name: String): WorkerResponse {
         logger.info ("Getting worker by name: $name" )
         return workerRepository.findByFullName(name)?.toResponse() ?: throw WorkerExceptions.WorkerNotFoundWithName(name)
     }
@@ -47,7 +47,7 @@ class WorkerService(
         return workerRepository.save(newWorker).toResponse()
     }
 
-    override fun updateWorker(id: ObjectId, worker: WorkerUpdateRequest): WorkerResponse? {
+    override fun updateWorker(id: ObjectId, worker: WorkerUpdateRequest): WorkerResponse {
         logger.info  ("Updating worker with id: $id" )
         val oldWorker = workerRepository.findById(id).orElseThrow{WorkerExceptions.WorkerNotFound(id.toString())}
         val workerType = workerTypeRepository.findByName(worker.workerType)
