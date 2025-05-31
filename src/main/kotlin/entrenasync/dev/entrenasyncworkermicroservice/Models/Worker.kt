@@ -14,7 +14,7 @@ import java.time.LocalDateTime
 @TypeAlias("Workers")
 class Worker (
     @Id
-    val id: ObjectId?,
+    var id: ObjectId?,
 
     @field:NotBlank(message = "User id must be not empty")
     val id_user: String, //TODO Puede dar problemas, posibilidad de cambiarlo por string

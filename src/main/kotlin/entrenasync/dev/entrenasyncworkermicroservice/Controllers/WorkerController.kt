@@ -3,6 +3,7 @@ package entrenasync.dev.entrenasyncworkermicroservice.Controllers
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerCreateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerResponse
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerUpdateRequest
+import entrenasync.dev.entrenasyncworkermicroservice.Services.IWorkerService
 import entrenasync.dev.entrenasyncworkermicroservice.Services.WorkerService
 import jakarta.validation.Valid
 import org.bson.types.ObjectId
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/workers")
 class WorkerController(
-    private val workerService: WorkerService
+    private val workerService: IWorkerService
 ) {
 
     @GetMapping
