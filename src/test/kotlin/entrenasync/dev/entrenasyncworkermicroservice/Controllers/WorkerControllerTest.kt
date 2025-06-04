@@ -46,7 +46,7 @@ class WorkerControllerTest {
         address = "Sample Address",
         avatar = "sampleAvatarUrl",
         birthdate = "1990-01-01",
-        gender = Worker.Gender.MALE.toString(),
+        gender = Worker.Gender.Masculino.toString(),
         phone = "1234567890",
         workerType = "sampleWorkerType",
         degree_image = "sampleDegreeImageUrl",
@@ -121,7 +121,7 @@ class WorkerControllerTest {
             fullName = "Sample Name UpdatedName",
             address = "Sample Address UpdatedAddress",
             birthdate = "1990-01-01",
-            gender = Worker.Gender.MALE,
+            gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "sampleWorkerType",
         )

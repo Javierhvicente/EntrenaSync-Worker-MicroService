@@ -29,7 +29,7 @@ class Worker (
     @field:Max(value = 100, message = "Maximum value for worker address must be 100")
     val address: String,
 
-    val avatar: String = "METER URL DEFAULT",
+    val avatar: String? = "undefinedAvatar_w8za89",
 
     @field:NotBlank(message = "Worker birth date must not be empty")
     val birthdate: String,
@@ -45,8 +45,7 @@ class Worker (
     @field:NotBlank(message = "Worker Type id must be not empty")
     val id_workerType: ObjectId,
 
-    @field:NotBlank(message = "The degree image of the worker must be not empty")
-    val degree_image: String,
+    val degree_image: String? = "undefined",
 
     val service_list: List<String> = emptyList(),
 
@@ -60,7 +59,7 @@ class Worker (
     }
 
     enum class Gender{
-        MALE,
-        FEMALE,
+        Masculino,
+        Femenino,
     }
 }

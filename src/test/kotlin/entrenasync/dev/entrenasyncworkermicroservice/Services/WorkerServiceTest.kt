@@ -42,7 +42,7 @@ class WorkerServiceTest {
         address = "Sample Address",
         avatar = "sampleAvatarUrl",
         birthdate = "1990-01-01",
-        gender = Worker.Gender.MALE.toString(),
+        gender = Worker.Gender.Masculino.toString(),
         phone = "1234567890",
         workerType = "sampleWorkerType",
         degree_image = "sampleDegreeImageUrl",
@@ -144,7 +144,7 @@ class WorkerServiceTest {
             fullName = "Sample Name UpdatedName",
             address = "Sample Address UpdatedAddress",
             birthdate = "1990-01-01",
-            gender = Worker.Gender.MALE,
+            gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "sampleWorkerType",
         )
@@ -182,7 +182,7 @@ class WorkerServiceTest {
             fullName = "Sample Name UpdatedName",
             address = "Sample Address UpdatedAddress",
             birthdate = "1990-01-01",
-            gender = Worker.Gender.MALE,
+            gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "nonExistingWorkerType",
         )
@@ -217,7 +217,7 @@ class WorkerServiceTest {
             fullName = "Sample Name UpdatedName",
             address = "Sample Address UpdatedAddress",
             birthdate = "1990-01-01",
-            gender = Worker.Gender.MALE,
+            gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "nonExistingWorkerType",
         )

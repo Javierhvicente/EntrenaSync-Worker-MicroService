@@ -32,6 +32,5 @@ data class WorkerCreateRequest(
     @field:NotBlank(message = "Worker Type id must not be empty")
     val workerType: String,
 
-    @field:NotBlank(message = "The degree image of the worker must not be empty")
-    val degree_image: String,
+    val degree_image: String?,
 )

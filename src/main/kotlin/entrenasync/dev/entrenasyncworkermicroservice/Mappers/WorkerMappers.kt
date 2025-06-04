@@ -17,8 +17,8 @@ fun Worker.toResponse(): WorkerResponse {
         phone = phone,
         address = address,
         gender = gender,
-        degree_image = degree_image,
-        avatar = avatar,
+        degree_image = degree_image ?: "undefined",
+        avatar = avatar ?: "undefinedAvatar_w8za89",
         service_list = service_list,
         createdAt = createdAt,
         updatedAt = updatedAt
