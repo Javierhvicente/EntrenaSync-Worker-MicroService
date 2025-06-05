@@ -2,7 +2,9 @@ package entrenasync.dev.entrenasyncworkermicroservice.Controllers
 
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerCreateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerResponse
+import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerTypeResponse
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerUpdateRequest
+import entrenasync.dev.entrenasyncworkermicroservice.Models.WorkerType
 import entrenasync.dev.entrenasyncworkermicroservice.Services.IWorkerService
 import entrenasync.dev.entrenasyncworkermicroservice.Services.WorkerService
 import jakarta.validation.Valid
@@ -47,5 +49,10 @@ class WorkerController(
     fun deleteWorker(@PathVariable id: ObjectId): ResponseEntity<Void>{
         workerService.deleteWorker(id)
         return ResponseEntity.noContent().build()
+    }
+
+    @GetMapping("/type/{id}")
+    fun getWorkersByType(@PathVariable id: String): ResponseEntity<WorkerTypeResponse> {
+        return ResponseEntity.ok().body(workerService.getWorkerTypeId(id))
     }
 }

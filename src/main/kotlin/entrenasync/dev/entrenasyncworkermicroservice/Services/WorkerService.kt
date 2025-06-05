@@ -2,6 +2,7 @@ package entrenasync.dev.entrenasyncworkermicroservice.Services
 
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerCreateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerResponse
+import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerTypeResponse
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerUpdateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Exceptions.WorkerExceptions
 import entrenasync.dev.entrenasyncworkermicroservice.Mappers.toResponse
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class WorkerService(
@@ -59,5 +61,13 @@ class WorkerService(
     override fun deleteWorker(id: ObjectId) {
         logger.info  ("Deleting worker with id: $id" )
         return workerRepository.deleteById(id)
+    }
+
+    override fun getWorkerTypeId(id: String): WorkerTypeResponse {
+        logger.info("Getting worker type by id: $id")
+        val objectId = ObjectId(id)
+        val type = workerTypeRepository.findById(objectId)
+            .orElseThrow { WorkerExceptions.WorkerTypeNotFound(id) }
+        return type.toResponse()
     }
 }

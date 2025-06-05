@@ -8,4 +8,7 @@ sealed class WorkerExceptions(message: String): Exception(message) {
     class WorkerNotFound(id: String): WorkerExceptions("Worker not found with id: $id")
     @ResponseStatus(HttpStatus.NOT_FOUND)
     class WorkerNotFoundWithName(name: String): WorkerExceptions("Worker not found with name: $name")
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    class WorkerTypeNotFound(name: String): WorkerExceptions("Worker type not found with name: $name")
 }

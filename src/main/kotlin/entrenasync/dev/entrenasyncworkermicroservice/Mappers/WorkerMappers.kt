@@ -4,6 +4,7 @@ import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerCreateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerResponse
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerUpdateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Models.Worker
+import entrenasync.dev.entrenasyncworkermicroservice.Models.WorkerType
 import org.bson.types.ObjectId
 import java.time.LocalDateTime
 
@@ -55,6 +56,13 @@ fun WorkerUpdateRequest.toWorker(oldWorker: Worker,workerTypeId: ObjectId ): Wor
         createdAt = oldWorker.createdAt,
         degree_image = oldWorker.degree_image,
         updatedAt = LocalDateTime.now(),
+    )
+}
+
+fun WorkerType.toResponse(): entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerTypeResponse {
+    return entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerTypeResponse(
+        id = id?.toHexString(),
+        name = name
     )
 }
 
