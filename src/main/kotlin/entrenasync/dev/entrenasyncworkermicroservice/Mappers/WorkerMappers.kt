@@ -11,7 +11,7 @@ fun Worker.toResponse(): WorkerResponse {
     return WorkerResponse(
         id = id.toString(),
         id_user = id_user,
-        id_workerType = id_workerType,
+        id_workerType = id_workerType.toHexString(),
         fullName = fullName,
         birthdate = birthdate,
         phone = phone,

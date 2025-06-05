@@ -25,7 +25,7 @@ data class WorkerResponse(
     @field:Max(value = 100, message = "Maximum value for worker address must be 100")
     val address: String,
 
-    val avatar: String = "METER URL DEFAULT",
+    val avatar: String,
 
     @field:NotBlank(message = "Worker birth date must not be empty")
     val birthdate: String,
@@ -39,7 +39,7 @@ data class WorkerResponse(
     var phone: String?,
 
     @field:NotBlank(message = "Worker Type id must be not empty")
-    val id_workerType: ObjectId,
+    val id_workerType: String,
 
     @field:NotBlank(message = "The degree image of the worker must be not empty")
     val degree_image: String,
