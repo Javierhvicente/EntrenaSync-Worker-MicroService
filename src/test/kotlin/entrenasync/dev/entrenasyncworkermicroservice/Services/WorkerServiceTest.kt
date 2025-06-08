@@ -143,8 +143,8 @@ class WorkerServiceTest {
         val updateRequest = WorkerUpdateRequest(
             fullName = "Sample Name UpdatedName",
             address = "Sample Address UpdatedAddress",
-            birthdate = "1990-01-01",
             gender = Worker.Gender.Masculino,
+            avatar = "sampleAvatarUrlUpdated",
             phone = "1234567890",
             workerType = "sampleWorkerType",
         )
@@ -181,7 +181,7 @@ class WorkerServiceTest {
         val updateRequest = WorkerUpdateRequest(
             fullName = "Sample Name UpdatedName",
             address = "Sample Address UpdatedAddress",
-            birthdate = "1990-01-01",
+            avatar = "sampleAvatarUrlUpdated",
             gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "nonExistingWorkerType",
@@ -216,7 +216,7 @@ class WorkerServiceTest {
         val updateRequest = WorkerUpdateRequest(
             fullName = "Sample Name UpdatedName",
             address = "Sample Address UpdatedAddress",
-            birthdate = "1990-01-01",
+            avatar = "sampleAvatarUrlUpdated",
             gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "nonExistingWorkerType",
