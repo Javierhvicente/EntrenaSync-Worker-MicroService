@@ -50,10 +50,15 @@ class WorkerService(
     override fun updateWorker(id: ObjectId, worker: WorkerUpdateRequest): WorkerResponse {
         logger.info  ("Updating worker with id: $id" )
         val oldWorker = workerRepository.findById(id).orElseThrow{WorkerExceptions.WorkerNotFound(id.toString())}
-        val workerType = workerTypeRepository.findByName(worker.workerType)
-            ?: workerTypeRepository.save(WorkerType(name = worker.workerType))
-        val updatedWorker = worker.toWorker(oldWorker, workerType.id!!)
-        return workerRepository.save(updatedWorker).toResponse()
+        if(worker.workerType != null){
+            val workerType = workerTypeRepository.findByName(worker.workerType)
+                ?: workerTypeRepository.save(WorkerType(name = worker.workerType))
+            val updatedWorker = worker.toWorker(oldWorker, workerType.id!!)
+            return workerRepository.save(updatedWorker).toResponse()
+        }else{
+            val updatedWorker = worker.toWorker(oldWorker, null)
+            return workerRepository.save(updatedWorker).toResponse()
+        }
     }
 
     override fun deleteWorker(id: ObjectId) {

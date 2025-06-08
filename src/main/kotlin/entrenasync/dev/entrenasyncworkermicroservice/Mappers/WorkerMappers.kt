@@ -40,17 +40,17 @@ fun WorkerCreateRequest.toWorker(workerTypeId: ObjectId): Worker {
     )
 }
 
-fun WorkerUpdateRequest.toWorker(oldWorker: Worker,workerTypeId: ObjectId ): Worker {
+fun WorkerUpdateRequest.toWorker(oldWorker: Worker,workerTypeId: ObjectId? ): Worker {
     return Worker(
         id = oldWorker.id,
         id_user = oldWorker.id_user,
-        id_workerType = workerTypeId,
+        id_workerType = workerTypeId ?: oldWorker.id_workerType,
         phone = if (this.phone != null) this.phone else oldWorker.phone,
-        fullName = this.fullName,
-        address = this.address,
-        gender = oldWorker.gender,
+        fullName = this.fullName ?: oldWorker.fullName,
+        address = this.address ?: oldWorker.address,
+        gender = this.gender ?: oldWorker.gender,
         birthdate = oldWorker.birthdate,
-        avatar = oldWorker.avatar,
+        avatar = this.avatar ?: oldWorker.avatar,
         service_list = oldWorker.service_list,
         createdAt = oldWorker.createdAt,
         degree_image = oldWorker.degree_image,

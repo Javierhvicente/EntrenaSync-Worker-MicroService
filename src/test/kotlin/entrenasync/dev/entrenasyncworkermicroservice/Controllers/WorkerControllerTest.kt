@@ -120,7 +120,7 @@ class WorkerControllerTest {
         val updatedRequest = WorkerUpdateRequest(
             fullName = "Sample Name UpdatedName",
             address = "Sample Address UpdatedAddress",
-            birthdate = "1990-01-01",
+            avatar = "sampleAvatarUrlUpdated",
             gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "sampleWorkerType",
