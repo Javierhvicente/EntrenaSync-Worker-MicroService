@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface IWorkerRepository: MongoRepository<Worker, ObjectId> {
     fun findByFullName(fullName: String): Worker?
+    fun findByIdUser(idUser: String): Worker?
 }

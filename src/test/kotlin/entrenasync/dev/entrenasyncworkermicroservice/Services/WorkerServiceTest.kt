@@ -147,6 +147,7 @@ class WorkerServiceTest {
             avatar = "sampleAvatarUrlUpdated",
             phone = "1234567890",
             workerType = "sampleWorkerType",
+            service_list = listOf("Service1", "Service2"),
         )
 
         // 3) Stub findById y findByName para rutas “existentes”
@@ -185,6 +186,7 @@ class WorkerServiceTest {
             gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "nonExistingWorkerType",
+            service_list = listOf("Service1", "Service2"),
         )
 
         // 3) Stub findById y findByName para rutas “existentes”
@@ -220,6 +222,7 @@ class WorkerServiceTest {
             gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "nonExistingWorkerType",
+            service_list = listOf("Service1", "Service2"),
         )
 
         every { workerRepository.findById(any()) } returns Optional.empty()

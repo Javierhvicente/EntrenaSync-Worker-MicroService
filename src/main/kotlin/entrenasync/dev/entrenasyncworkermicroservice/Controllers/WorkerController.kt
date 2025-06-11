@@ -28,6 +28,11 @@ class WorkerController(
         return ResponseEntity.ok().body(workerService.getWorkerById(id))
     }
 
+    @GetMapping("/user/{id}")
+    fun getWorkerByUserId(@PathVariable id: String): ResponseEntity<WorkerResponse> {
+        return ResponseEntity.ok().body(workerService.getWorkerByUserId(id))
+    }
+
     @GetMapping("/name/{name}")
     fun searchWorkerByName(@PathVariable name: String): ResponseEntity<WorkerResponse>{
         return ResponseEntity.ok().body(workerService.getWorkerByName(name))

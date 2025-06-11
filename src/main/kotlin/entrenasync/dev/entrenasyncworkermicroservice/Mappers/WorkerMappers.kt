@@ -4,13 +4,14 @@ import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerCreateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerResponse
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerUpdateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Models.Worker
+import entrenasync.dev.entrenasyncworkermicroservice.Models.WorkerType
 import org.bson.types.ObjectId
 import java.time.LocalDateTime
 
 fun Worker.toResponse(): WorkerResponse {
     return WorkerResponse(
         id = id.toString(),
-        id_user = id_user,
+        id_user = idUser,
         id_workerType = id_workerType,
         fullName = fullName,
         birthdate = birthdate,
@@ -28,7 +29,7 @@ fun Worker.toResponse(): WorkerResponse {
 fun WorkerCreateRequest.toWorker(workerTypeId: ObjectId): Worker {
     return Worker(
         id = ObjectId.get(),
-        id_user = id_user,
+        idUser = id_user,
         fullName = fullName,
         birthdate = birthdate,
         phone = phone,
@@ -43,7 +44,7 @@ fun WorkerCreateRequest.toWorker(workerTypeId: ObjectId): Worker {
 fun WorkerUpdateRequest.toWorker(oldWorker: Worker,workerTypeId: ObjectId? ): Worker {
     return Worker(
         id = oldWorker.id,
-        id_user = oldWorker.id_user,
+        idUser = oldWorker.idUser,
         id_workerType = workerTypeId ?: oldWorker.id_workerType,
         phone = if (this.phone != null) this.phone else oldWorker.phone,
         fullName = this.fullName ?: oldWorker.fullName,
@@ -51,7 +52,11 @@ fun WorkerUpdateRequest.toWorker(oldWorker: Worker,workerTypeId: ObjectId? ): Wo
         gender = this.gender ?: oldWorker.gender,
         birthdate = oldWorker.birthdate,
         avatar = this.avatar ?: oldWorker.avatar,
-        service_list = oldWorker.service_list,
+        service_list = if (this.service_list.isEmpty()) {
+            oldWorker.service_list
+        } else {
+            oldWorker.service_list + this.service_list
+        },
         createdAt = oldWorker.createdAt,
         degree_image = oldWorker.degree_image,
         updatedAt = LocalDateTime.now(),

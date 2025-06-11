@@ -8,6 +8,7 @@ import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.TypeAlias
 import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.data.mongodb.core.mapping.Field
 import java.time.LocalDateTime
 
 @Document("Workers")
@@ -17,7 +18,9 @@ class Worker (
     var id: ObjectId?,
 
     @field:NotBlank(message = "User id must be not empty")
-    val id_user: String, //TODO Puede dar problemas, posibilidad de cambiarlo por string
+    @Field("id_user")
+    val idUser: String,
+
 
     @field:Min(value = 3, message = "Minimum value for worker full name must be 3")
     @field:Max(value =40, message = "Maximum value for worker full name must be 40")
@@ -47,7 +50,7 @@ class Worker (
 
     val degree_image: String? = "undefined",
 
-    val service_list: List<String> = emptyList(),
+    var service_list: List<String> = emptyList(),
 
     var createdAt: LocalDateTime = LocalDateTime.now(),
     var updatedAt: LocalDateTime = LocalDateTime.now()

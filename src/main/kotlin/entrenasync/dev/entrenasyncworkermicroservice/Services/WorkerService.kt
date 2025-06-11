@@ -32,6 +32,11 @@ class WorkerService(
         return workerRepository.findById(id).orElseThrow{WorkerExceptions.WorkerNotFound(id.toString())}.toResponse()
     }
 
+    override fun getWorkerByUserId(id: String): WorkerResponse {
+        logger.info("Getting worker by user id: $id")
+        return workerRepository.findByIdUser(id)?.toResponse() ?: throw WorkerExceptions.WorkerNotFoundWithUserId(id)
+    }
+
     override fun getWorkerByName(name: String): WorkerResponse {
         logger.info ("Getting worker by name: $name" )
         return workerRepository.findByFullName(name)?.toResponse() ?: throw WorkerExceptions.WorkerNotFoundWithName(name)
