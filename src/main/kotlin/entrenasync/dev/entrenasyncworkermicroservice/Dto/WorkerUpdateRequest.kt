@@ -22,6 +22,8 @@ class WorkerUpdateRequest(
 
     val avatar: String?,
 
+    val service_list: List<String>
+
 ) {
 
 }

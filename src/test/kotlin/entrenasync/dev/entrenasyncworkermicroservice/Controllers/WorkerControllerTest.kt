@@ -124,6 +124,7 @@ class WorkerControllerTest {
             gender = Worker.Gender.Masculino,
             phone = "1234567890",
             workerType = "sampleWorkerType",
+            service_list = listOf("Service1", "Service2")
         )
         val updatedResponse = updatedRequest.toWorker(sampleEntity, existingTypeId).toResponse()
 

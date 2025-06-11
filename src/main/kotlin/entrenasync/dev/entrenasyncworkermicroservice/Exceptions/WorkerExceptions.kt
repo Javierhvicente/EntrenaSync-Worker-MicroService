@@ -11,4 +11,7 @@ sealed class WorkerExceptions(message: String): Exception(message) {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     class WorkerTypeNotFound(name: String): WorkerExceptions("Worker type not found with name: $name")
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    class WorkerNotFoundWithUserId(id: String): WorkerExceptions("Worker not found with user id: $id")
 }
