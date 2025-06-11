@@ -2,6 +2,7 @@ package entrenasync.dev.entrenasyncworkermicroservice.Mappers
 
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerCreateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerResponse
+import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerTypeResponse
 import entrenasync.dev.entrenasyncworkermicroservice.Dto.WorkerUpdateRequest
 import entrenasync.dev.entrenasyncworkermicroservice.Models.Worker
 import entrenasync.dev.entrenasyncworkermicroservice.Models.WorkerType
@@ -12,7 +13,7 @@ fun Worker.toResponse(): WorkerResponse {
     return WorkerResponse(
         id = id.toString(),
         id_user = idUser,
-        id_workerType = id_workerType,
+        id_workerType = id_workerType.toString(),
         fullName = fullName,
         birthdate = birthdate,
         phone = phone,
@@ -60,6 +61,13 @@ fun WorkerUpdateRequest.toWorker(oldWorker: Worker,workerTypeId: ObjectId? ): Wo
         createdAt = oldWorker.createdAt,
         degree_image = oldWorker.degree_image,
         updatedAt = LocalDateTime.now(),
+    )
+}
+
+fun WorkerType.toResponse(): WorkerTypeResponse {
+    return WorkerTypeResponse(
+        id = id.toString(),
+        name = name
     )
 }
 
